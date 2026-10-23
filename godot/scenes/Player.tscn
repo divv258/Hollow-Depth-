@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://player"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1")
+collision_layer = 1
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = CapsuleShape2D(radius=10.0, height=32.0)
+position = Vector2(12, 19)
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Body" type="ColorRect" parent="Sprite"]
+color = Color(0.87, 0.87, 0.95, 1)
+size = Vector2(24, 32)
+position = Vector2(0, 0)
+
+[node name="Head" type="ColorRect" parent="Sprite"]
+color = Color(0.9, 0.9, 0.97, 1)
+size = Vector2(20, 16)
+position = Vector2(2, -14)
+
+[node name="Eyes" type="Node2D" parent="Sprite"]
+
+[node name="EyeL" type="ColorRect" parent="Sprite/Eyes"]
+color = Color(0.05, 0.04, 0.08, 1)
+size = Vector2(5, 7)
+position = Vector2(4, -11)
+
+[node name="EyeR" type="ColorRect" parent="Sprite/Eyes"]
+color = Color(0.05, 0.04, 0.08, 1)
+size = Vector2(5, 7)
+position = Vector2(13, -11)
+
+[node name="SlashHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
